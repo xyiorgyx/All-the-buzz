@@ -1,48 +1,37 @@
 import express from "express";
-import {PORT, mongoDBURL} from "./config.js";
+import { PORT, mongoDBURL } from "./config.js";
 import mongoose from 'mongoose';
 import { Hive } from './Models/hiveModel.js'
+import hiveroutes from './routes/hiveRoute.js'
+import cors from 'cors'
+
 
 const app = express();
 app.use(express.json())
 
-app.get('/', (req,res) => {
+// app.use(cors({
+//     orgigin:'http://localhost:5555/',
+//     methods:['GET','POST','PUT','DELETE'],
+//     allowedHeaders:['Content-Type']
+// })
+// );
+
+app.get('/', (req, res) => {
     console.log(req)
     return res.status(234).send('welcome')
 })
 
-app.post('/hives', async (req, res) => {
-    try {
-        if (!req.body.name || !req.body.owner || !req.body.location) {
-            return res.status(400).send({
-                message: 'Send all required fields: name, owner, location',
-            });
-        }
-
-        const newHive = {
-            name: req.body.name,
-            owner: req.body.owner,
-            location: req.body.location,
-        };
-
-        const newHiveInstance = await Hive.create(newHive);
-
-        return res.status(201).send(newHiveInstance);
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send({ message: error.message });
-    }
-});
+app.use('/hives', hiveroutes)
 
 mongoose
-.connect(mongoDBURL)
-.then(() => {
-console.log('App is now connected to database')
-app.listen(PORT, () => {
-    console.log (`App is listening to port: ${PORT}`);
-});
+    .connect(mongoDBURL)
+    .then(() => {
+        console.log('App is now connected to database')
+        app.listen(PORT, () => {
+            console.log(`App is listening to port: ${PORT}`);
+        });
 
-})
-.catch((error) => {
-console.log(error)
-})
+    })
+    .catch((error) => {
+        console.log(error)
+    })
