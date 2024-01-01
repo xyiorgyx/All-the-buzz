@@ -1,6 +1,6 @@
-import { Schema, model } from "mongoose"
+import mongoose from "mongoose"
 
-const hiveSchema = new Schema(
+const hiveSchema = mongoose.Schema(
     {
         name: {
             type: String,
@@ -20,4 +20,4 @@ const hiveSchema = new Schema(
     },
 )
 
-export const Hive = model('Hive', hiveSchema)
+export const Hive = mongoose.model('Hive', hiveSchema)

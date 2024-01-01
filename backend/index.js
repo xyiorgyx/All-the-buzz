@@ -1,7 +1,6 @@
 import express from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from 'mongoose';
-import { Hive } from './Models/hiveModel.js'
 import hiveroutes from './routes/hiveRoute.js'
 import cors from 'cors'
 
@@ -9,12 +8,7 @@ import cors from 'cors'
 const app = express();
 app.use(express.json())
 
-app.use(cors({
-    orgigin:'http://localhost:5555/',
-    methods:['GET','POST','PUT','DELETE'],
-    allowedHeaders:['Content-Type']
-})
-);
+app.use(cors());
 
 app.get('/', (req, res) => {
     console.log(req)
