@@ -1,7 +1,8 @@
 import express from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from 'mongoose';
-import hiveroutes from './routes/hiveRoute.js'
+import hiveRoutes from './routes/hiveRoute.js'
+import userRoutes from './routes/userRoute.js'
 import cors from 'cors'
 
 
@@ -15,8 +16,8 @@ app.get('/', (req, res) => {
     return res.status(234).send('welcome')
 })
 
-app.use('/hives', hiveroutes)
-
+app.use('/hives', hiveRoutes)
+app.use('/users', userRoutes)
 mongoose
     .connect(mongoDBURL)
     .then(() => {
