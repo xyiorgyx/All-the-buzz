@@ -14,6 +14,9 @@ const hiveSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        hives:[{
+            type: objectID
+        }]
     },
     {
         timestamps: true

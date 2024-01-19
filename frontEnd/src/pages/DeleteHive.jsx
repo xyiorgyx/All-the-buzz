@@ -12,7 +12,7 @@ const DeleteHive = () => {
 
     const handleDeleteHive = () => {
         setLoading(true);
-        axio
+        axios
             .delete(`http://localhost:5555/hives/${id}`)
             .then(() => {
                 setLoading(false);

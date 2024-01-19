@@ -27,6 +27,7 @@ const EditHive = () => {
                 console.log(err)
             })
     }, [])
+
     const handleEditHive = () => {
         const data = {
             name,

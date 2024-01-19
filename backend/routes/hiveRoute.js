@@ -1,12 +1,9 @@
-import express from'express';
+import express from 'express';
 import { Hive } from '../Models/hiveModel.js';
 
-const router= express.Router();
+const router = express.Router();
 
-
-// create a new hive
-
-router.post('', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         if (!req.body.name || !req.body.owner || !req.body.location) {
             return res.status(400).send({
@@ -29,23 +26,20 @@ router.post('', async (req, res) => {
     }
 });
 
-//get all hives
-
-router.get('', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const hives = await Hive.find({})
+        const hives = await Hive.find({});
 
         return res.status(200).json({
             count: hives.length,
             data: hives,
-        })
-    }
-    catch (error) {
+        });
+    } catch (error) {
         console.log(error.message);
         res.status(500).send({ message: error.message });
     }
-
 });
+
 
 //get a specific hive
 
@@ -86,7 +80,7 @@ router.put('/:id', async (req, res) => {
             return res.status(404).json({message: 'Hive not found'})
         }
 
-        return res.status(400).send({message: 'Your hive has been updated successfully'})
+        return res.status(200).send({message: 'Your hive has been updated successfully'})
     }
     catch (error) {
         console.log(error.message);
@@ -104,7 +98,7 @@ router.delete('/:id', async (req,res) =>{
         if(!result){
             return res.status(404).json({message: 'Hive not found'})
         }
-        return res.status(400).send({message: 'Your hive has been deleted successfully'})
+        return res.status(200).send({message: 'Your hive has been deleted successfully'})
     }
     catch (error) {
         console.log(error.message);

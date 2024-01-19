@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-const Schema = mongoose.Schema;
+
 
 const userSchema = mongoose.Schema(
     {
@@ -12,7 +12,6 @@ const userSchema = mongoose.Schema(
         password:{
             type:String,
             required: true,
-            match: [/(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/]
         },
         email: {
             type: String,
@@ -20,11 +19,6 @@ const userSchema = mongoose.Schema(
             required: true,
             match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/],
         },
-        hives: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Hive'
-            }],
     },
     {
         timestamps: true
