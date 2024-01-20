@@ -12,18 +12,21 @@ import DeleteHive from "./pages/DeleteHIve";
 
 
 const App = () => {
-    return (
-      <Routes> 
-        <Route path='/' element={<Home/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
-        <Route path="/account" element={<Account/>}/>
-        <Route path='/hives/create' element={<CreateHives/>}/>
-        <Route path='/hives/details/:id' element={<ShowHive/>}/>
-        <Route path='/hives/edit/:id' element={<EditHive/>}/>
-        <Route path='/hives/delete/:id' element={<DeleteHive/>}/>
+  return (
+    <div className="App">
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/account" element={<Account />} />
+        <Route path='/hives/create' element={<CreateHives />} />
+        <Route path='/hives/details/:id' element={<ShowHive />} />
+        <Route path='/hives/edit/:id' element={<EditHive />} />
+        <Route path='/hives/delete/:id' element={<DeleteHive />} />
       </Routes>
-    )
+    </div>
+  )
 }
 
 export default App;

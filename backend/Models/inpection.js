@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const hiveSchema = mongoose.Schema(
+const inspectionSchema = mongoose.Schema(
     {
         name: {
             type: String,
@@ -20,4 +20,4 @@ const hiveSchema = mongoose.Schema(
     },
 )
 
-export const Hive = mongoose.model('Hive', hiveSchema)
+export const Inspectrion = mongoose.model('Inspection', inspectionSchema)

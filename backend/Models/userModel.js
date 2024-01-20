@@ -9,8 +9,8 @@ const userSchema = mongoose.Schema(
             required: true,
             trim: true
         },
-        password:{
-            type:String,
+        password: {
+            type: String,
             required: true,
         },
         email: {
@@ -19,6 +19,13 @@ const userSchema = mongoose.Schema(
             required: true,
             match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/],
         },
+        hives: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Hive"
+            }
+        ],
+
     },
     {
         timestamps: true
@@ -27,7 +34,7 @@ const userSchema = mongoose.Schema(
         toJSON: {
             getters: true,
             virtuals: true,
-            
+
         },
         id: false,
     }

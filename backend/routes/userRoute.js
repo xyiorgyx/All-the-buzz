@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 
 // get login
 
-app.post('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try{
         const {username, password} =  req.body;
         const user = await User.findOne({username})

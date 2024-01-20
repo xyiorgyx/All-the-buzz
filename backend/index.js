@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import hiveRoutes from './routes/hiveRoute.js'
 import userRoutes from './routes/userRoute.js'
 import cors from 'cors'
-
 import bodyParser from "body-parser";
 
 const app = express();
