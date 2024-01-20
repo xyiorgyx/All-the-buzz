@@ -3,6 +3,15 @@ import mongoose from "mongoose"
 
 const userSchema = mongoose.Schema(
     {
+        firstName: {
+            type: String,
+            required: true,
+          },
+          lastName: {
+            type: String,
+            required: true,
+          },
+          profilePicture: String,
         username: {
             type: String,
             unique: true,
@@ -15,10 +24,20 @@ const userSchema = mongoose.Schema(
         },
         email: {
             type: String,
-            unique: true,
             required: true,
-            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/],
-        },
+            unique: true,
+            trim: true,
+            lowercase: true,
+          },
+        isAdmin: {
+            type: Boolean,
+            default: false,
+          },
+          accountStatus: {
+            type: String,
+            enum: ['active', 'inactive', 'suspended'],
+            default: 'active',
+          },
         hives: [
             {
                 type: mongoose.Schema.Types.ObjectId,

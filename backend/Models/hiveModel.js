@@ -6,6 +6,10 @@ const hiveSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        picture: {
+            type: String,
+            required: false,
+        },
         owner: {
             type: String,
             maxLength: 40,

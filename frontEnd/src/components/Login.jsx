@@ -47,7 +47,7 @@ const Login = () => {
   return (
     <div className='w-full h-screen  flex'>
       {loading ? <Spinner /> : ''}
-      <div className='w-[50%] h=[100%] bg-[#1a1a1a] text-white flex justify-center items-center' >
+      <div className='w-[100%] h=[100%] bg-[#1a1a1a] text-white flex justify-center items-center' >
         <form className=' text-center border rounded-lg w-[600px] h-[400px] p-9'>
           {/* Username Input*/}
           <label>Username</label>
@@ -71,9 +71,6 @@ const Login = () => {
           <br />
           <button className='w-[200px] h-[50px] border hover:bg-teral-900' onClick={handleLogin}> Sign Up</button>
         </form>
-      </div>
-      <div className='w-[50%] h-[100%] flex justify-center items-center bg-teal-800'>
-        <h2 className='text-3xl text-white'>Login</h2>
       </div>
     </div>
   )
