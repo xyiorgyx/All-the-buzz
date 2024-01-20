@@ -12,16 +12,6 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchUsers();
-  }, [])
-
-  const fetchUsers = () => {
-    axios
-    .get('http://localhost:5555/users')
-    .then((res) => 
-    console.log(res.data))
-  }
 
   const handleSignup = (event) => {
     event.preventDefault()
