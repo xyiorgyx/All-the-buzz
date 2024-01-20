@@ -62,4 +62,23 @@ router.post('/login', async (req, res) => {
         res.status(500).send({error:"An error has occured"})
     }
 })
+
+// delete user
+router.delete('/:id', async (req,res) =>{
+    try{
+        const {id} = req.params;
+        const result = await User.findByIdAndDelete(id);
+
+        if(!result){
+            return res.status(404).json({message: 'User not found'})
+        }
+        return res.status(200).send({message: 'Your User has been deleted successfully'})
+    }
+    catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: error.message });
+    }
+
+})
+
 export default router;

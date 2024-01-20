@@ -63,7 +63,7 @@ const Login = () => {
           <label>Password</label>
           <br />
           <input
-            type='text'
+            type='passwords'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className='w-[400px] h-[40px] rounded-xl bg-zinc-700 p-2' />

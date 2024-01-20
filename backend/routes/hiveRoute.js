@@ -1,7 +1,23 @@
 import express from 'express';
 import { Hive } from '../Models/hiveModel.js';
-
+import {User} from '../Models/userModel.js'
 const router = express.Router();
+
+
+
+router.post ('/createHive/:userId',async (req, res) => {
+    try {
+      const { userId } = req.params;
+      const newHive = new Hive(req.body);
+      const user = await User.findById(userId);
+      user.hives.push(newHive);
+      await Promise.all([newHive.save(), user.save()]);
+      res.status(201).json(newHive);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+  
 
 router.post('/', async (req, res) => {
     try {

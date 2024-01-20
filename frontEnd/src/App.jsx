@@ -12,6 +12,7 @@ import DeleteHive from "./pages/DeleteHIve";
 
 
 const App = () => {
+  const isUserSignedin= !!localStorage.getItem('token')
   return (
     <div className="App">
       <NavBar />
@@ -19,7 +20,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/account" element={<Account />} />
+        {isUserSignedin && <Route path="/account" element={<Account />} />}
         <Route path='/hives/create' element={<CreateHives />} />
         <Route path='/hives/details/:id' element={<ShowHive />} />
         <Route path='/hives/edit/:id' element={<EditHive />} />

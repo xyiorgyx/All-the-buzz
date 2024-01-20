@@ -14,6 +14,12 @@ const hiveSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        inspections: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Inspection"
+            }
+        ],
     },
     {
         timestamps: true

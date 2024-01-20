@@ -9,13 +9,17 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPass, setConfirmPass] = useState('')
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
 
   const handleSignup = (event) => {
     event.preventDefault()
-
+    if(password !== confirmPass){
+      alert('Passwords do no matach')
+      return
+    }
     const data = {
       email,
       username,
@@ -69,9 +73,18 @@ const SignUp = () => {
           <label>Password</label>
           <br />
           <input
-            type='text'
+            type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className='w-[400px] h-[40px] rounded-xl bg-zinc-700 p-2' />
+          <br />
+          <br />
+          <label>Confirm Password</label>
+          <br />
+          <input
+            type='password'
+            value={confirmPass}
+            onChange={(e) => setConfirmPass(e.target.value)}
             className='w-[400px] h-[40px] rounded-xl bg-zinc-700 p-2' />
           <br />
           <br />
